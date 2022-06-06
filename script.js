@@ -1,15 +1,25 @@
-const dino = document.querySelector(".dino");
+let dino = document.querySelector(".dino");
 // html location of dino
-const catus = document.querySelector(".catus");
-//html location of catus
+let catus = document.querySelector(".catus");
+let gameOver = document.querySelector("#gameOver");
 
+window.addEventListener("keydown", (start) => {
+  if (start.code === "Space") {
+    gameOver.style.display = "none";
+    catus.classList.add("catusMoving");
+  }
+});
 // function startGame() {
 //   let body = document.querySelector("body");
-//   console.log(body);
+//   let gameArea = document.createElement("gameArea");
 //   let dino = document.createElement("dino");
-//   console.log(dino);
+//   let catus = document.createElement(".catus");
+//   gameArea.setAttribute("class", "gameArea");
+//   body.append(gameArea);
 //   dino.setAttribute("class", "dino");
 //   body.append(dino);
+//   catus.setAttribute("class", "catus");
+//   body.append(catus);
 // }
 
 // const startButton = document.querySelector("#start-game");
@@ -48,7 +58,7 @@ document.addEventListener("keydown", playerControl);
 //adding eventlisten, for when a key is pressed down, do function control,
 
 //checking for collision by checking the match of x and y coordinates of the two objects every 10ms. If matched, game is over.
-setInterval(function () {
+let checkCollision = setInterval(function () {
   let dinoXCoordinates = dino.getBoundingClientRect().x;
   let dinoYCoordinates = dino.getBoundingClientRect().y;
   let dinoWidth = dino.getBoundingClientRect().width;
@@ -68,7 +78,9 @@ setInterval(function () {
   ) {
     console.log("no collision!");
   } else {
-    // alert("GG!");
+    gameOver.style.display = "block";
+    catus.classList.remove("catusMoving");
     console.log("collision!");
+    clearInterval(checkCollision);
   }
-}, 0);
+}, 100);

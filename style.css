@@ -19,16 +19,27 @@
   position: relative;
   bottom: 50px;
   left: 750px;
-  animation: obstacleMoving 1s infinite linear;
+
   /* ^^ to select which keyframe animation below, and set for duration. linear for constant speed instead of default.*/
 }
-#startScreen {
+
+#gameOver {
+  /* display: none; */
+  font-size: 60px;
+  position: relative;
+  width: 400px;
+  height: 80px;
+  left: 280px;
+  bottom: 350px;
+}
+/* #startScreen {
   background-color: blue;
   width: 800px;
   height: 362px;
   padding: 20px;
   position: fixed;
-}
+  z-index: 1;
+} */
 
 @keyframes obstacleMoving {
   00% {
@@ -60,3 +71,7 @@
   animation: jumping 500ms;
 }
 /* ^^ this connects to jump class in html, activating the jump animation */
+
+.catusMoving {
+  animation: obstacleMoving 1s infinite linear;
+}
