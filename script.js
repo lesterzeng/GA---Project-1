@@ -2,10 +2,21 @@ let dino = document.querySelector(".dino");
 // html location of dino
 let catus = document.querySelector(".catus");
 let gameOver = document.querySelector("#gameOver");
+let startScreen = document.querySelector("#startScreen");
+function randomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
+let randomSpawnTime = setInterval(() => {
+  randomNumber(3000, 5000);
+}, 500);
+
+// starting the game
 window.addEventListener("keydown", (start) => {
   if (start.code === "Space") {
     gameOver.style.display = "none";
+    startScreen.style.display = "none";
+
     catus.classList.add("catusMoving");
   }
 });
@@ -79,8 +90,8 @@ let checkCollision = setInterval(function () {
     console.log("no collision!");
   } else {
     gameOver.style.display = "block";
+
     catus.classList.remove("catusMoving");
     console.log("collision!");
-    clearInterval(checkCollision);
   }
 }, 100);

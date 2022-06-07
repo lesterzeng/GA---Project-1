@@ -24,12 +24,22 @@
 }
 
 #gameOver {
-  /* display: none; */
+  display: none;
   font-size: 60px;
   position: relative;
   width: 400px;
-  height: 80px;
+  height: 100px;
   left: 280px;
+  bottom: 380px;
+}
+
+#startScreen {
+  display: block;
+  font-size: 40px;
+  position: relative;
+  width: 500px;
+  height: 80px;
+  left: 210px;
   bottom: 350px;
 }
 /* #startScreen {
@@ -40,7 +50,12 @@
   position: fixed;
   z-index: 1;
 } */
-
+h6 {
+  position: relative;
+  bottom: 75px;
+  left: 80px;
+  font-size: 30px;
+}
 @keyframes obstacleMoving {
   00% {
     right: 100px;
