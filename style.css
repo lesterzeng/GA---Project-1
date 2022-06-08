@@ -88,5 +88,6 @@ h6 {
 /* ^^ this connects to jump class in html, activating the jump animation */
 
 .catusMoving {
-  animation: obstacleMoving 1s infinite linear;
+  animation: obstacleMoving infinite linear;
+  animation-duration: 1s;
 }

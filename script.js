@@ -3,23 +3,30 @@ let dino = document.querySelector(".dino");
 let catus = document.querySelector(".catus");
 let gameOver = document.querySelector("#gameOver");
 let startScreen = document.querySelector("#startScreen");
-function randomNumber(min, max) {
-  return Math.random() * (max - min) + min;
+
+// let randomSpawnTime = setInterval(() => {
+//   let randomNumber = Math.floor(Math.random() * (1500 - 1000) + 1000);
+//   return randomNumber;
+// }, 100);
+
+function spawnCatus() {
+  catus.classList.add("catusMoving");
 }
-
-let randomSpawnTime = setInterval(() => {
-  randomNumber(3000, 5000);
-}, 500);
-
 // starting the game
-window.addEventListener("keydown", (start) => {
-  if (start.code === "Space") {
-    gameOver.style.display = "none";
-    startScreen.style.display = "none";
-
-    catus.classList.add("catusMoving");
+window.addEventListener(
+  "keydown",
+  (start) => {
+    if (start.code === "Space") {
+      gameOver.style.display = "none";
+      startScreen.style.display = "none";
+      spawnCatus();
+    }
   }
-});
+  // setInterval(function () {
+  //   spawnCatus();
+  //   console.log("spawned");
+  // }, randomSpawnTime);
+);
 // function startGame() {
 //   let body = document.querySelector("body");
 //   let gameArea = document.createElement("gameArea");
@@ -61,7 +68,7 @@ function jump() {
     dino.classList.remove("jump");
     currentlyJumping = false;
   }, 500);
-  console.log("jumped!");
+  // console.log("jumped!");
 }
 //^^ set timer to remove jump class from dino class, so as to able to add jump class again(multiple jumps)
 
@@ -69,7 +76,13 @@ document.addEventListener("keydown", playerControl);
 //adding eventlisten, for when a key is pressed down, do function control,
 
 //checking for collision by checking the match of x and y coordinates of the two objects every 10ms. If matched, game is over.
-let checkCollision = setInterval(function () {
+// let checkCollision = setInterval(someFunc, 100);
+
+let checkCollision = setInterval(() => {
+  getAndMatchXYCoordinates();
+}, 100);
+
+const getAndMatchXYCoordinates = () => {
   let dinoXCoordinates = dino.getBoundingClientRect().x;
   let dinoYCoordinates = dino.getBoundingClientRect().y;
   let dinoWidth = dino.getBoundingClientRect().width;
@@ -87,11 +100,10 @@ let checkCollision = setInterval(function () {
     dinoYCoordinates > catusYCoordinates + catusHeight ||
     dinoYCoordinates + dinoHeight < catusYCoordinates
   ) {
-    console.log("no collision!");
+    // console.log("no collision!");
   } else {
     gameOver.style.display = "block";
-
     catus.classList.remove("catusMoving");
-    console.log("collision!");
+    // console.log("collision!");
   }
-}, 100);
+};
