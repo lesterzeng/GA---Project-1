@@ -4,23 +4,39 @@
   border: 1px solid black;
 }
 
-.dino {
+.player {
   width: 75px;
   height: 100px;
-  background-color: rgb(134, 19, 200);
   position: absolute;
   top: 310px;
+  background-image: url("LesterP1Artwork-02.png");
+  background-size: 90%;
+  background-repeat: no-repeat;
 }
 
-.catus {
+.bottomBlock {
   width: 50px;
   height: 50px;
-  background-color: red;
+
   position: relative;
   bottom: 50px;
   left: 750px;
+  background-image: url("Lester P1 Artwork (1)_Block JS.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
 
   /* ^^ to select which keyframe animation below, and set for duration. linear for constant speed instead of default.*/
+}
+
+.topBlock {
+  width: 50px;
+  height: 25px;
+  position: relative;
+  bottom: 130px;
+  left: 750px;
+  background-image: url("Lester P1 Artwork (1)_Block CSS.png");
+  background-size: 35%;
+  background-repeat: no-repeat;
 }
 
 #gameOver {
@@ -42,17 +58,10 @@
   left: 210px;
   bottom: 350px;
 }
-/* #startScreen {
-  background-color: blue;
-  width: 800px;
-  height: 362px;
-  padding: 20px;
-  position: fixed;
-  z-index: 1;
-} */
+
 h6 {
   position: relative;
-  bottom: 75px;
+  bottom: 60px;
   left: 80px;
   font-size: 30px;
 }
@@ -70,11 +79,11 @@ h6 {
   00% {
     top: 310px;
   }
-  60% {
-    top: 245px;
+  50% {
+    top: 150px;
   }
   75% {
-    top: 245px;
+    top: 150px;
   }
   100% {
     top: 310px;
@@ -87,7 +96,12 @@ h6 {
 }
 /* ^^ this connects to jump class in html, activating the jump animation */
 
-.catusMoving {
+.bottomMoving {
   animation: obstacleMoving infinite linear;
-  animation-duration: 1s;
+  animation-duration: 2s;
+}
+
+.topMoving {
+  animation: obstacleMoving infinite linear;
+  animation-duration: 3s;
 }

@@ -1,17 +1,30 @@
-let dino = document.querySelector(".dino");
+let player = document.querySelector(".player");
 // html location of dino
-let catus = document.querySelector(".catus");
+let bottomBlock = document.querySelector(".bottomBlock");
 let gameOver = document.querySelector("#gameOver");
 let startScreen = document.querySelector("#startScreen");
+let topBlock = document.querySelector(".topBlock");
 
-// let randomSpawnTime = setInterval(() => {
-//   let randomNumber = Math.floor(Math.random() * (1500 - 1000) + 1000);
-//   return randomNumber;
-// }, 100);
+// function generateRandom() {
+//   let randomNumber = Math.floor(Math.random() * (3000 - 2000) + 2000);
+//   console.log(randomNumber);
+// }
 
-function spawnCatus() {
-  catus.classList.add("catusMoving");
+// function repeatGenerateRandom() {
+//   setInterval(() => {
+//     generateRandom();
+//     // console.log(results);
+//   }, 10);
+// }
+
+function spawnBlocks() {
+  // let catus1 = document.createElement("div");
+  // catus1.setAttribute("class", "catusMoving");
+  // body.append(catus1);
+  bottomBlock.classList.add("bottomMoving");
+  topBlock.classList.add("topMoving");
 }
+
 // starting the game
 window.addEventListener(
   "keydown",
@@ -19,7 +32,7 @@ window.addEventListener(
     if (start.code === "Space") {
       gameOver.style.display = "none";
       startScreen.style.display = "none";
-      spawnCatus();
+      spawnBlocks();
     }
   }
   // setInterval(function () {
@@ -62,10 +75,10 @@ function playerControl(e) {
 
 // should link with html, then activate jump animation in css
 function jump() {
-  dino.classList.add("jump");
+  player.classList.add("jump");
   //add jump class into dino class
   setTimeout(function () {
-    dino.classList.remove("jump");
+    player.classList.remove("jump");
     currentlyJumping = false;
   }, 500);
   // console.log("jumped!");
@@ -83,27 +96,49 @@ let checkCollision = setInterval(() => {
 }, 100);
 
 const getAndMatchXYCoordinates = () => {
-  let dinoXCoordinates = dino.getBoundingClientRect().x;
-  let dinoYCoordinates = dino.getBoundingClientRect().y;
-  let dinoWidth = dino.getBoundingClientRect().width;
-  let dinoHeight = dino.getBoundingClientRect().height;
-  //^^ findind real time coordinates of dino
-  let catusXCoordinates = catus.getBoundingClientRect().x;
-  let catusYCoordinates = catus.getBoundingClientRect().y;
-  let catusWidth = catus.getBoundingClientRect().width;
-  let catusHeight = catus.getBoundingClientRect().height;
-  //^^finding real time coordinates of obstacle.
+  let playerXCoordinates = player.getBoundingClientRect().x;
+  let playerYCoordinates = player.getBoundingClientRect().y;
+  let playerWidth = player.getBoundingClientRect().width;
+  let playerHeight = player.getBoundingClientRect().height;
+  //^^ findind real time coordinates of player
+  let bottomBlockXCoordinates = bottomBlock.getBoundingClientRect().x;
+  let bottomBlockYCoordinates = bottomBlock.getBoundingClientRect().y;
+  let bottomBlockWidth = bottomBlock.getBoundingClientRect().width;
+  let bottomBlockHeight = bottomBlock.getBoundingClientRect().height;
+  //^^finding real time coordinates of bottomBlock
+  let topBlockXCoordinates = topBlock.getBoundingClientRect().x;
+  let topBlockYCoordinates = topBlock.getBoundingClientRect().y;
+  let topBlockWidth = topBlock.getBoundingClientRect().width;
+  let topBlockHeight = topBlock.getBoundingClientRect().height;
 
   if (
-    dinoXCoordinates > catusXCoordinates + catusWidth ||
-    dinoXCoordinates + dinoWidth < catusXCoordinates ||
-    dinoYCoordinates > catusYCoordinates + catusHeight ||
-    dinoYCoordinates + dinoHeight < catusYCoordinates
+    playerXCoordinates < bottomBlockXCoordinates + bottomBlockWidth &&
+    playerXCoordinates + playerWidth > bottomBlockXCoordinates &&
+    playerYCoordinates < bottomBlockYCoordinates + bottomBlockHeight &&
+    playerYCoordinates + playerHeight > bottomBlockYCoordinates
+
+    // playerXCoordinates > bottomBlockXCoordinates + bottomBlockWidth ||
+    // playerXCoordinates + playerWidth < bottomBlockXCoordinates ||
+    // playerYCoordinates > bottomBlockYCoordinates + bottomBlockHeight ||
+    // playerYCoordinates + playerHeight < bottomBlockYCoordinates ||
+    // playerXCoordinates > topBlockXCoordinates + topBlockWidth ||
+    // playerXCoordinates + playerWidth < topBlockXCoordinates ||
+    // playerYCoordinates > topBlockYCoordinates + topBlockHeight ||
+    // playerYCoordinates + playerHeight < topBlockYCoordinates
   ) {
-    // console.log("no collision!");
-  } else {
     gameOver.style.display = "block";
-    catus.classList.remove("catusMoving");
-    // console.log("collision!");
+    bottomBlock.classList.remove("bottomMoving");
+    topBlock.classList.remove("topMoving");
+    console.log("collision!");
+  } else if (
+    playerXCoordinates < topBlockXCoordinates + topBlockWidth &&
+    playerXCoordinates + playerWidth > topBlockXCoordinates &&
+    playerYCoordinates < topBlockYCoordinates + topBlockHeight &&
+    playerYCoordinates + playerHeight > topBlockYCoordinates
+  ) {
+    gameOver.style.display = "block";
+    bottomBlock.classList.remove("bottomMoving");
+    topBlock.classList.remove("topMoving");
+    console.log("collision!");
   }
 };
