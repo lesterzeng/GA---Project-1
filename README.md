@@ -1,6 +1,6 @@
 # GA-Project-1
 
-GA Project 1 : Jumping Lester(Formally known as Dodging Dino - Chrome Dino Clone)
+GA Project 1 : Jumping Student(Formally known as Dodging Dino - Chrome Dino Clone)
 
 Objective
 To create a clone of the popular side-scrolling game known as "Chrome Dino".
