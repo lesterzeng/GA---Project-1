@@ -24,8 +24,6 @@
   background-image: url("Lester P1 Artwork (1)_Block JS.png");
   background-size: 70%;
   background-repeat: no-repeat;
-
-  /* ^^ to select which keyframe animation below, and set for duration. linear for constant speed instead of default.*/
 }
 
 .topBlock {
@@ -78,7 +76,6 @@ h6 {
     left: 1.5px;
   }
 }
-/* ^^ parameters of the obstacle animation */
 
 @keyframes jumping {
   00% {
@@ -94,12 +91,10 @@ h6 {
     top: 310px;
   }
 }
-/* ^^ parameters of the jump animation */
 
 .jump {
   animation: jumping 500ms;
 }
-/* ^^ this connects to jump class in html, activating the jump animation */
 
 .bottomMoving {
   animation: obstacleMoving infinite linear;
