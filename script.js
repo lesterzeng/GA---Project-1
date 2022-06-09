@@ -4,6 +4,7 @@ let bottomBlock = document.querySelector(".bottomBlock");
 let gameOver = document.querySelector("#gameOver");
 let startScreen = document.querySelector("#startScreen");
 let topBlock = document.querySelector(".topBlock");
+let dialoge = document.querySelector(".dialoge");
 
 // function generateRandom() {
 //   let randomNumber = Math.floor(Math.random() * (3000 - 2000) + 2000);
@@ -79,6 +80,7 @@ function jump() {
   //add jump class into dino class
   setTimeout(function () {
     player.classList.remove("jump");
+    dialoge.classList.remove("words");
     currentlyJumping = false;
   }, 500);
   // console.log("jumped!");
@@ -142,3 +144,10 @@ const getAndMatchXYCoordinates = () => {
     console.log("collision!");
   }
 };
+
+// let words = document.createElement("div");
+// words.setAttribute("class", "words");
+// words.innerHTML = `<h6>-Easy Peasy!</h6>`;
+// dialoge.append(words);
+// const parent = document.getElementById("dialoge");
+// console.log(parent);
