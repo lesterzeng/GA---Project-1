@@ -41,6 +41,3 @@ Pause function.
 Player gain size after a certain period of time.
 Add moving terrain, and clouds for aesthetics.
 Randomizing the spawn rate of the obstacles.
-
-Unsolved problems
--Randomizing the spawn rate of the obstables.
