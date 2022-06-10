@@ -1,9 +1,9 @@
-let player = document.querySelector(".player");
-let bottomBlock = document.querySelector(".bottomBlock");
-let gameOver = document.querySelector("#gameOver");
-let startScreen = document.querySelector("#startScreen");
-let topBlock = document.querySelector(".topBlock");
-let dialoge = document.querySelector(".dialoge");
+const player = document.querySelector(".player");
+const bottomBlock = document.querySelector(".bottomBlock");
+const gameOver = document.querySelector("#gameOver");
+const startScreen = document.querySelector("#startScreen");
+const topBlock = document.querySelector(".topBlock");
+const dialoge = document.querySelector(".dialoge");
 
 function spawnBlocks() {
   bottomBlock.classList.add("bottomMoving");

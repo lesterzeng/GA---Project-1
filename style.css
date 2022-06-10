@@ -64,10 +64,6 @@ h6 {
   font-size: 30px;
 }
 
-.dialoge {
-  position: relative;
-  bottom: 320px;
-}
 @keyframes obstacleMoving {
   00% {
     right: 100px;
